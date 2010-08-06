@@ -4,7 +4,6 @@ describe MetricFu::Rcov do
   
   before :each do
     MetricFu::Configuration.run {}
-    File.stub!(:directory?).and_return(true)
     @rcov = MetricFu::Rcov.new('base_dir')
   end
   

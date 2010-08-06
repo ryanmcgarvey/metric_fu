@@ -69,7 +69,7 @@ module MetricFu
    
     # Returns the directory where the Generator will write any output
     def self.metric_directory
-      File.join(MetricFu.scratch_directory, class_name) 
+      File.join(MetricFu.scratch_directory, class_name)
     end
 
     def create_metric_dir_if_missing #:nodoc:

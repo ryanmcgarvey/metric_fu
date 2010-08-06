@@ -138,6 +138,9 @@ module MetricFu
                                    "--exclude /gems/,/Library/,/usr/,spec"],
                     :external => nil
                   }
+      @perf = {
+                :environment => 'test'
+              }
       @rails_best_practices = {}
       @file_globs_to_ignore = []
                                    
