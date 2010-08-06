@@ -9,10 +9,6 @@ describe MetricFu::Perf do
 
   describe "emit method" do
 
-    before :each do
-      #@perf.stub!(:puts)
-    end
-
     it "should clear out previous output and create new output folder" do
       @perf.stub!(:`)
       FileUtils.should_receive(:rm_rf).with(MetricFu::Perf.metric_directory, :verbose => false)
@@ -35,13 +31,10 @@ describe MetricFu::Perf do
       @perf.should_receive(:`).with(/>> .*perf\.txt/)
       @perf.emit
     end
+
   end
 
-    it "should run the performance tests" do
-      #@perf.stub!(:`)
-      @perf.should_receive(:run_performance_tests)
-      @perf.emit
-    end
+
   
 
   PERF_OUTPUT = <<-HERE
