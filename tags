@@ -1,0 +1,241 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+AwesomeTemplate	lib/templates/awesome/awesome_template.rb	/^class AwesomeTemplate < MetricFu::Template$/;"	c
+AwesomeTemplate	spec/generators/rcov_spec.rb	/^   class AwesomeTemplate < MetricFu::Template$/;"	c
+Churn	lib/generators/churn.rb	/^  class Churn < Generator$/;"	c
+ConcreteClass	spec/base/generator_spec.rb	/^  class ConcreteClass < MetricFu::Generator$/;"	c
+Configuration	lib/base/configuration.rb	/^  class Configuration$/;"	c
+Flay	lib/generators/flay.rb	/^  class Flay < Generator$/;"	c
+FlayBluffGrapher	lib/graphs/engines/bluff.rb	/^  class FlayBluffGrapher < FlayGrapher$/;"	c
+FlayGchartGrapher	lib/graphs/engines/gchart.rb	/^  class FlayGchartGrapher < FlayGrapher$/;"	c
+FlayGrapher	lib/graphs/flay_grapher.rb	/^  class FlayGrapher < Grapher$/;"	c
+Flog	lib/generators/flog.rb	/^  class Flog < Generator$/;"	c
+FlogBluffGrapher	lib/graphs/engines/bluff.rb	/^  class FlogBluffGrapher < FlogGrapher$/;"	c
+FlogGchartGrapher	lib/graphs/engines/gchart.rb	/^  class FlogGchartGrapher < FlogGrapher$/;"	c
+FlogGrapher	lib/graphs/flog_grapher.rb	/^  class FlogGrapher < Grapher$/;"	c
+GchartGrapher	lib/graphs/engines/gchart.rb	/^  module GchartGrapher$/;"	m
+Generator	lib/base/generator.rb	/^  class Generator$/;"	c
+Graph	lib/base/graph.rb	/^  class Graph$/;"	c
+Grapher	lib/graphs/engines/bluff.rb	/^  class Grapher$/;"	c
+Grapher	lib/graphs/engines/gchart.rb	/^  class Grapher$/;"	c
+Grapher	lib/graphs/grapher.rb	/^  class Grapher$/;"	c
+Line	lib/generators/rcov.rb	/^    class Line$/;"	c
+MD5Tracker	lib/base/md5_tracker.rb	/^  class MD5Tracker$/;"	c
+MethodContainer	lib/generators/flog.rb	/^  class MethodContainer$/;"	c
+MetricFu	lib/base/base_template.rb	/^module MetricFu$/;"	m
+MetricFu	lib/base/configuration.rb	/^module MetricFu$/;"	m
+MetricFu	lib/base/generator.rb	/^module MetricFu$/;"	m
+MetricFu	lib/base/graph.rb	/^module MetricFu$/;"	m
+MetricFu	lib/base/md5_tracker.rb	/^module MetricFu$/;"	m
+MetricFu	lib/base/report.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/churn.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/flay.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/flog.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/perf.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/rails_best_practices.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/rcov.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/reek.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/roodi.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/saikuro.rb	/^module MetricFu$/;"	m
+MetricFu	lib/generators/stats.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/engines/bluff.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/engines/gchart.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/flay_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/flog_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/rails_best_practices_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/rcov_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/reek_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/roodi_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/graphs/stats_grapher.rb	/^module MetricFu$/;"	m
+MetricFu	lib/metric_fu.rb	/^module MetricFu$/;"	m
+Perf	lib/generators/perf.rb	/^  class Perf < Generator$/;"	c
+RailsBestPractices	lib/generators/rails_best_practices.rb	/^  class RailsBestPractices < Generator$/;"	c
+RailsBestPracticesBluffGrapher	lib/graphs/engines/bluff.rb	/^  class RailsBestPracticesBluffGrapher < RailsBestPracticesGrapher$/;"	c
+RailsBestPracticesGchartGrapher	lib/graphs/engines/gchart.rb	/^  class RailsBestPracticesGchartGrapher < RailsBestPracticesGrapher$/;"	c
+RailsBestPracticesGrapher	lib/graphs/rails_best_practices_grapher.rb	/^  class RailsBestPracticesGrapher < Grapher$/;"	c
+Rcov	lib/generators/rcov.rb	/^  class Rcov < Generator$/;"	c
+RcovBluffGrapher	lib/graphs/engines/bluff.rb	/^  class RcovBluffGrapher < RcovGrapher$/;"	c
+RcovGchartGrapher	lib/graphs/engines/gchart.rb	/^  class RcovGchartGrapher < RcovGrapher$/;"	c
+RcovGrapher	lib/graphs/rcov_grapher.rb	/^  class RcovGrapher < Grapher$/;"	c
+Reek	lib/generators/reek.rb	/^  class Reek < Generator$/;"	c
+ReekBluffGrapher	lib/graphs/engines/bluff.rb	/^  class ReekBluffGrapher < ReekGrapher$/;"	c
+ReekGchartGrapher	lib/graphs/engines/gchart.rb	/^  class ReekGchartGrapher < ReekGrapher$/;"	c
+ReekGrapher	lib/graphs/reek_grapher.rb	/^  class ReekGrapher < Grapher$/;"	c
+Report	lib/base/report.rb	/^  class Report$/;"	c
+Roodi	lib/generators/roodi.rb	/^  class Roodi < Generator$/;"	c
+RoodiBluffGrapher	lib/graphs/engines/bluff.rb	/^  class RoodiBluffGrapher < RoodiGrapher$/;"	c
+RoodiGchartGrapher	lib/graphs/engines/gchart.rb	/^  class RoodiGchartGrapher < RoodiGrapher$/;"	c
+RoodiGrapher	lib/graphs/roodi_grapher.rb	/^  class RoodiGrapher < Grapher$/;"	c
+Saikuro	lib/generators/saikuro.rb	/^  class Saikuro < Generator$/;"	c
+Saikuro	lib/generators/saikuro.rb	/^  class Saikuro::ParsingElement$/;"	c
+Saikuro	lib/generators/saikuro.rb	/^  class Saikuro::SFile$/;"	c
+StandardTemplate	lib/templates/standard/standard_template.rb	/^class StandardTemplate < MetricFu::Template$/;"	c
+StandardTemplate	spec/generators/rcov_spec.rb	/^   class StandardTemplate < MetricFu::Template$/;"	c
+Stats	lib/generators/stats.rb	/^  class Stats < Generator$/;"	c
+StatsBluffGrapher	lib/graphs/engines/bluff.rb	/^  class StatsBluffGrapher < StatsGrapher$/;"	c
+StatsGchartGrapher	lib/graphs/engines/gchart.rb	/^  class StatsGchartGrapher < StatsGrapher$/;"	c
+StatsGrapher	lib/graphs/stats_grapher.rb	/^  class StatsGrapher < Grapher$/;"	c
+Template	lib/base/base_template.rb	/^  class Template$/;"	c
+add	lib/base/graph.rb	/^    def add(graph_type, graph_engine)$/;"	f
+add	lib/base/report.rb	/^    def add(report_type)$/;"	f
+add_attr_accessors_to_self	lib/base/configuration.rb	/^    def add_attr_accessors_to_self$/;"	f
+add_class_methods_to_metric_fu	lib/base/configuration.rb	/^    def add_class_methods_to_metric_fu$/;"	f
+add_coverage_percentage	lib/generators/rcov.rb	/^    def add_coverage_percentage(files)$/;"	f
+add_method	lib/generators/flog.rb	/^    def add_method(full_method_name, operators, score, path)$/;"	f
+add_path	lib/generators/flog.rb	/^    def add_path path$/;"	f
+analyze	lib/base/generator.rb	/^    def analyze #:nodoc:$/;"	f
+analyze	lib/generators/churn.rb	/^    def analyze$/;"	f
+analyze	lib/generators/flay.rb	/^    def analyze$/;"	f
+analyze	lib/generators/flog.rb	/^    def analyze$/;"	f
+analyze	lib/generators/perf.rb	/^    def analyze$/;"	f
+analyze	lib/generators/rails_best_practices.rb	/^    def analyze$/;"	f
+analyze	lib/generators/rcov.rb	/^    def analyze$/;"	f
+analyze	lib/generators/reek.rb	/^    def analyze$/;"	f
+analyze	lib/generators/roodi.rb	/^    def analyze$/;"	f
+analyze	lib/generators/saikuro.rb	/^    def analyze$/;"	f
+analyze	lib/generators/stats.rb	/^    def analyze$/;"	f
+analyze	spec/base/generator_spec.rb	/^    def analyze$/;"	f
+assemble_classes	lib/generators/saikuro.rb	/^    def assemble_classes(files)$/;"	f
+assemble_files	lib/generators/rcov.rb	/^    def assemble_files(output)$/;"	f
+assemble_files	lib/generators/saikuro.rb	/^    def assemble_files$/;"	f
+assemble_methods	lib/generators/saikuro.rb	/^    def assemble_methods(files)$/;"	f
+assign	spec/base/report_spec.rb	/^    it 'should create a new template class assign a report_hash '\\$/;"	c
+average_score	lib/generators/flog.rb	/^    def average_score$/;"	f
+base_directory	spec/base/configuration_spec.rb	/^  def base_directory$/;"	f
+calc_top_five_percent_average	lib/graphs/flog_grapher.rb	/^    def calc_top_five_percent_average(metrics)$/;"	f
+calc_top_five_percent_average_legacy	lib/graphs/flog_grapher.rb	/^    def calc_top_five_percent_average_legacy(metrics)$/;"	f
+class_name	lib/base/generator.rb	/^    def self.class_name$/;"	F
+clean_scratch_directory	lib/generators/perf.rb	/^    def clean_scratch_directory$/;"	f
+configuration	lib/base/configuration.rb	/^  def self.configuration$/;"	F
+create_data_dir_if_missing	lib/base/generator.rb	/^    def create_data_dir_if_missing #:nodoc:$/;"	f
+create_instance_var	lib/base/base_template.rb	/^    def create_instance_var(section, contents)$/;"	f
+create_metric_dir_if_missing	lib/base/generator.rb	/^    def create_metric_dir_if_missing #:nodoc:$/;"	f
+create_output_dir_if_missing	lib/base/generator.rb	/^    def create_output_dir_if_missing #:nodoc:$/;"	f
+cycle	lib/base/base_template.rb	/^    def cycle(first_value, second_value, iteration)$/;"	f
+descending	lib/base/generator.rb	/^        This method must be implemented by a concrete class descending$/;"	c
+determine_y_axis_scale	lib/graphs/engines/gchart.rb	/^    def determine_y_axis_scale(values)$/;"	f
+documentation	lib/base/generator.rb	/^        from Generator.  See generator class documentation for more $/;"	c
+emit	lib/base/generator.rb	/^    def emit #:nodoc:$/;"	f
+emit	lib/generators/churn.rb	/^    def emit$/;"	f
+emit	lib/generators/flay.rb	/^    def emit$/;"	f
+emit	lib/generators/flog.rb	/^    def emit$/;"	f
+emit	lib/generators/perf.rb	/^    def emit$/;"	f
+emit	lib/generators/rails_best_practices.rb	/^    def emit$/;"	f
+emit	lib/generators/rcov.rb	/^    def emit$/;"	f
+emit	lib/generators/reek.rb	/^    def emit$/;"	f
+emit	lib/generators/roodi.rb	/^    def emit$/;"	f
+emit	lib/generators/saikuro.rb	/^    def emit $/;"	f
+emit	lib/generators/stats.rb	/^    def emit$/;"	f
+emit	spec/base/generator_spec.rb	/^    def emit$/;"	f
+erbify	lib/base/base_template.rb	/^    def erbify(section)$/;"	f
+file_already_counted?	lib/base/md5_tracker.rb	/^      def file_already_counted?(path_to_file)$/;"	f
+file_changed?	lib/base/md5_tracker.rb	/^      def file_changed?(path_to_file, base_dir)$/;"	f
+file_url	lib/base/base_template.rb	/^    def file_url(name, line) # :nodoc:$/;"	f
+filename	lib/generators/saikuro.rb	/^    def filename$/;"	f
+format_directories	lib/generators/saikuro.rb	/^    def format_directories$/;"	f
+generate	lib/base/graph.rb	/^    def generate$/;"	f
+generate_report	lib/base/generator.rb	/^    def generate_report$/;"	f
+generate_report	lib/base/generator.rb	/^    def self.generate_report(options={})$/;"	F
+get_class_names	lib/generators/saikuro.rb	/^    def get_class_names$/;"	f
+get_elements	lib/generators/saikuro.rb	/^    def get_elements$/;"	f
+get_metrics	lib/graphs/flay_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_metrics	lib/graphs/flog_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_metrics	lib/graphs/rails_best_practices_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_metrics	lib/graphs/rcov_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_metrics	lib/graphs/reek_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_metrics	lib/graphs/roodi_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_metrics	lib/graphs/stats_grapher.rb	/^    def get_metrics(metrics, date)$/;"	f
+get_new_config	spec/base/configuration_spec.rb	/^  def get_new_config$/;"	f
+graph	lib/base/graph.rb	/^  def self.graph$/;"	F
+graph!	lib/graphs/engines/bluff.rb	/^    def graph!$/;"	f
+graph!	lib/graphs/engines/gchart.rb	/^    def graph!$/;"	f
+highest_score	lib/generators/flog.rb	/^    def highest_score$/;"	f
+initialize	lib/base/configuration.rb	/^    def initialize #:nodoc:#$/;"	f
+initialize	lib/base/generator.rb	/^    def initialize(options={})$/;"	f
+initialize	lib/base/graph.rb	/^    def initialize$/;"	f
+initialize	lib/generators/churn.rb	/^    def initialize(options={})$/;"	f
+initialize	lib/generators/flog.rb	/^    def initialize(name, path)$/;"	f
+initialize	lib/generators/rcov.rb	/^      def initialize(content, was_run)$/;"	f
+initialize	lib/generators/saikuro.rb	/^    def initialize(line)$/;"	f
+initialize	lib/generators/saikuro.rb	/^    def initialize(path)$/;"	f
+initialize	lib/graphs/flay_grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/flog_grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/rails_best_practices_grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/rcov_grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/reek_grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/roodi_grapher.rb	/^    def initialize$/;"	f
+initialize	lib/graphs/stats_grapher.rb	/^    def initialize$/;"	f
+inline_css	lib/base/base_template.rb	/^    def inline_css(css)$/;"	f
+is_cruise_control_rb?	lib/base/configuration.rb	/^    def is_cruise_control_rb?$/;"	f
+is_valid_text_file?	lib/generators/saikuro.rb	/^    def self.is_valid_text_file?(path)$/;"	F
+link_content	lib/base/base_template.rb	/^    def link_content(name, line=nil, link_content=nil) # :nodoc:$/;"	f
+link_to_filename	lib/base/base_template.rb	/^    def link_to_filename(name, line = nil, link_content = nil)$/;"	f
+massage_for_reek_12	lib/generators/reek.rb	/^    def massage_for_reek_12$/;"	f
+md5_dir	lib/base/md5_tracker.rb	/^      def md5_dir(path_to_file, base_dir)$/;"	f
+md5_file	lib/base/md5_tracker.rb	/^      def md5_file(path_to_file, base_dir)$/;"	f
+merge_classes	lib/generators/saikuro.rb	/^    def merge_classes$/;"	f
+method_scores	lib/generators/flog.rb	/^    def method_scores$/;"	f
+metric_directory	lib/base/generator.rb	/^    def metric_directory$/;"	f
+metric_directory	lib/base/generator.rb	/^    def self.metric_directory$/;"	F
+metric_fu_root	spec/base/configuration_spec.rb	/^  def metric_fu_root$/;"	f
+open_in_browser?	lib/base/report.rb	/^    def open_in_browser?$/;"	f
+output_directory	spec/base/configuration_spec.rb	/^  def output_directory$/;"	f
+output_filename	lib/base/base_template.rb	/^    def output_filename(section)$/;"	f
+platform	lib/base/configuration.rb	/^    def platform #:nodoc:$/;"	f
+rails?	lib/base/configuration.rb	/^    def rails?$/;"	f
+reek_12?	lib/generators/reek.rb	/^    def reek_12?$/;"	f
+remove_excluded_files	lib/base/generator.rb	/^    def remove_excluded_files(paths, globs_to_remove = MetricFu.file_globs_to_ignore)$/;"	f
+remove_noise	lib/generators/stats.rb	/^    def remove_noise(output)$/;"	f
+report	lib/base/report.rb	/^  def self.report$/;"	F
+report_hash	lib/base/report.rb	/^    def report_hash #:nodoc:$/;"	f
+require_graphing_gem	lib/graphs/engines/gchart.rb	/^    def self.require_graphing_gem$/;"	F
+require_graphing_gem	lib/graphs/grapher.rb	/^    def self.require_graphing_gem$/;"	F
+reset	lib/base/configuration.rb	/^    def reset$/;"	f
+round_to_tenths	lib/base/base_template.rb	/^    def round_to_tenths(decimal)$/;"	f
+round_to_tenths	lib/base/generator.rb	/^    def round_to_tenths(decimal)$/;"	f
+run	lib/base/configuration.rb	/^    def self.run$/;"	F
+run_performance_tests	lib/generators/perf.rb	/^    def run_performance_tests$/;"	f
+save_output	lib/base/report.rb	/^    def save_output(content, dir, file='index.html')$/;"	f
+save_templatized_report	lib/base/report.rb	/^    def save_templatized_report$/;"	f
+scratch_directory	spec/base/configuration_spec.rb	/^  def scratch_directory$/;"	f
+set_code_dirs	lib/base/configuration.rb	/^    def set_code_dirs$/;"	f
+set_global_stats	lib/generators/stats.rb	/^    def set_global_stats(totals)$/;"	f
+set_granular_stats	lib/generators/stats.rb	/^    def set_granular_stats(lines)$/;"	f
+set_graphs	lib/base/configuration.rb	/^    def set_graphs$/;"	f
+set_metrics	lib/base/configuration.rb	/^    def set_metrics$/;"	f
+show_in_browser	lib/base/report.rb	/^    def show_in_browser(dir)$/;"	f
+sort_classes	lib/generators/saikuro.rb	/^    def sort_classes(classes)$/;"	f
+sort_files	lib/generators/saikuro.rb	/^    def sort_files(files)$/;"	f
+sort_methods	lib/generators/saikuro.rb	/^    def sort_methods(methods)$/;"	f
+template	lib/base/base_template.rb	/^    def template(section)$/;"	f
+template_class	spec/base/configuration_spec.rb	/^  def template_class$/;"	f
+template_directory	spec/base/configuration_spec.rb	/^  def template_directory$/;"	f
+template_exists?	lib/base/base_template.rb	/^    def template_exists?(section)$/;"	f
+this_directory	lib/templates/awesome/awesome_template.rb	/^  def this_directory$/;"	f
+this_directory	lib/templates/standard/standard_template.rb	/^  def this_directory$/;"	f
+this_directory	spec/generators/rcov_spec.rb	/^     def this_directory$/;"	f
+to_graph	lib/base/generator.rb	/^    def to_graph #:nodoc:$/;"	f
+to_h	lib/generators/churn.rb	/^    def to_h$/;"	f
+to_h	lib/generators/flay.rb	/^    def to_h$/;"	f
+to_h	lib/generators/flog.rb	/^    def to_h$/;"	f
+to_h	lib/generators/perf.rb	/^    def to_h$/;"	f
+to_h	lib/generators/rails_best_practices.rb	/^    def to_h$/;"	f
+to_h	lib/generators/rcov.rb	/^      def to_h$/;"	f
+to_h	lib/generators/rcov.rb	/^    def to_h$/;"	f
+to_h	lib/generators/reek.rb	/^    def to_h$/;"	f
+to_h	lib/generators/roodi.rb	/^    def to_h$/;"	f
+to_h	lib/generators/saikuro.rb	/^    def to_h$/;"	f
+to_h	lib/generators/stats.rb	/^    def to_h$/;"	f
+to_h	spec/base/generator_spec.rb	/^    def to_h$/;"	f
+to_yaml	lib/base/report.rb	/^    def to_yaml$/;"	f
+total_score	lib/generators/flog.rb	/^    def total_score$/;"	f
+track	lib/base/md5_tracker.rb	/^      def track(path_to_file, base_dir)$/;"	f
+write	lib/templates/awesome/awesome_template.rb	/^  def write$/;"	f
+write	lib/templates/standard/standard_template.rb	/^  def write$/;"	f
+write	spec/generators/rcov_spec.rb	/^     def write$/;"	f
