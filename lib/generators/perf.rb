@@ -22,8 +22,8 @@ module MetricFu
       @scores = {}
       metric_files = Dir["#{metric_directory}/*wall_time.csv"]
       metric_files.each do |metric_file|
-        File.open("#{metric_directory}/#{metric_file}") do |in_file|
-          @scores[metric_file] = process_wall_time_file(in_file.read)
+        File.open("#{MetricFu.perf[:output_directory]}/#{metric_file}") do |in_file|
+          @scores[metric_file] = process_wall_time_file(in_file.read)          
         end
       end
       @scores

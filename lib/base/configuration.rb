@@ -139,7 +139,8 @@ module MetricFu
                     :external => nil
                   }
       @perf = {
-                :environment => 'test'
+                :environment => 'test',
+                :output_directory => "tmp/performance"
               }
       @rails_best_practices = {}
       @file_globs_to_ignore = []

@@ -22,10 +22,10 @@ describe MetricFu::Perf do
       Dir.should_receive(:[]).
               with(/.*wall_time.csv/).
               and_return(PERF_WALL_TIME_FILES.keys)
-      PERF_WALL_TIME_FILES.each_pair do |test_file_name,test_file_contents|
+      PERF_WALL_TIME_FILES.keys.each do |test_file_name|
         mock_file = mock("io", :read => "some stuff")
         File.should_receive(:open).
-                with(@perf.metric_directory + "/" + test_file_name).
+                with(MetricFu.perf[:output_directory] + "/" + test_file_name).
                 and_yield(mock_file)
         @perf.should_receive(:process_wall_time_file).with("some stuff")
       end
