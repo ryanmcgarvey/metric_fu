@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 
 describe MetricFu::Perf do
-  
+
   before :each do
     MetricFu::Configuration.run {}
     @perf = MetricFu::Perf.new('base_dir')
@@ -34,39 +34,113 @@ describe MetricFu::Perf do
 
   end
 
+  describe "analyze method" do
+    before :each do
+    end
 
-  
 
-  PERF_OUTPUT = <<-HERE
-(in /home/e3/dev/webTAC)
-Loaded suite /home/e3/.rvm/gems/ree-1.8.7-2010.02/gems/rake-0.8.7/lib/rake/rake_test_loader
-Started
-FrontPageTest#test_portal (10 ms warmup)
-           wall_time: 13 ms
-              memory: 979.51 KB
-             objects: 8859
-             gc_runs: 0
-             gc_time: 0 ms
-.PortalTest#test_portal (3 ms warmup)
-           wall_time: 9 ms
-              memory: 979.51 KB
-             objects: 8859
-             gc_runs: 0
-             gc_time: 0 ms
-.
-Finished in 1.05824 seconds.
+    it "should open each wall time csv file and process each line" do
+      Dir.should_receive(:[]).
+              with(/.*wall_time.csv/).
+              and_return(PERF_WALL_TIME_FILES.keys)
+      PERF_WALL_TIME_FILES.each_pair do |test_file_name,test_file_contents|
+        mock_file = mock("io", :read => "some stuff")
+        File.should_receive(:open).
+                with(MetricFu::Perf.metrics_directory + "/" + test_file_name).
+                and_yield(mock_file)
+        @perf.should_receive(:process_wall_time_file).with("some stuff")
+      end
+      @perf.analyze
+    end
+  end
 
-10 tests, 0 assertions, 0 failures, 0 errors
+  describe "process_wall_time_file method" do
+    it "should parse csv into array of scores" do
+      wall_time_content = PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"]
+      scores = @perf.process_wall_time_file(wall_time_content)
+      scores.size.should == 17
+      scores.first.score.should ==0.0126267671585083
+      scores.first.time.should ==DateTime.parse("2010-08-04T19:46:16Z")
+      scores.last.score.should == 0.0131937265396118
+      scores.last.time.should == DateTime.parse("2010-08-06T20:39:03Z")
+    end
+  end
 
-TEST BENCHMARK TIMES: OVERALL
-0.590 test_portal(FrontPageTest)
-0.467 test_portal(PortalTest)
+  describe "parse_line_into_score_item" do
+    it "should return the correct score item to a correct line" do
+      row = ["0.0131937265396118", "2010-08-06T20:39:03Z", nil, "2.3.4", "ruby-1.8.7.253", "x86_64-linux"]
+      score_item = @perf.parse_array_into_score_item(row)
+      score_item.score.should == 0.0131937265396118
+      score_item.time.should == DateTime.parse("2010-08-06T20:39:03Z")
+    end
 
-Test Benchmark Times: Suite Totals:
-0.590 FrontPageTest
-0.467 PortalTest
+    it "should raise if the first item is not a float" do
+      row = ["measurement", "2010-08-06T20:39:03Z", "app", "rails", "ruby", "platform"]
+      lambda {@perf.parse_array_into_score_item(row)}.should raise_error(ArgumentError)
+    end
 
-HERE
+    it "should raise if the second item is not a date" do
+      row = ["0.1", "created_at", "app", "rails", "ruby", "platform"]
+      lambda {@perf.parse_array_into_score_item(row)}.should raise_error(ArgumentError)
+    end
+
+    it "should raise if the array is empty or nil" do
+      row = [nil, nil]
+      lambda {@perf.parse_array_into_score_item(row)}.should raise_error
+    end 
+  end
+
+  PERF_WALL_TIME_FILES = {}
+  PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"] = <<-HERE
+measurement,created_at,app,rails,ruby,platform
+0.0126267671585083,2010-08-04T19:46:16Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0125694274902344,2010-08-04T20:07:17Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0126004815101624,2010-08-04T20:09:01Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0128989815711975,2010-08-04T20:09:16Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0129777193069458,2010-08-04T20:11:01Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0,2010-08-05T15:35:05Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0,2010-08-05T20:41:33Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0,2010-08-05T20:46:14Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0146334767341614,2010-08-05T20:49:00Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.013060986995697,2010-08-05T20:56:38Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0128282904624939,2010-08-05T21:03:02Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0129525065422058,2010-08-05T21:59:35Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0125052332878113,2010-08-05T22:00:02Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0131164789199829,2010-08-06T14:45:57Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0130281448364258,2010-08-06T19:17:25Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.012207567691803,2010-08-06T20:28:19Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0131937265396118,2010-08-06T20:39:03Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+  HERE
+
+  PERF_WALL_TIME_FILES["PortalTest#test_portal_wall_time.csv"] = <<-HERE
+measurement,created_at,app,rails,ruby,platform
+0.0162451863288879,2010-08-04T19:28:56Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0126134753227234,2010-08-04T19:29:55Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0137957334518433,2010-08-04T19:30:32Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00890654325485229,2010-08-04T19:46:17Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00900155305862427,2010-08-04T20:07:17Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00916147232055664,2010-08-04T20:09:01Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00844573974609375,2010-08-04T20:09:16Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00883245468139648,2010-08-04T20:11:02Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0,2010-08-05T15:35:56Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0,2010-08-05T20:42:27Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0,2010-08-05T20:47:04Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00931674242019653,2010-08-05T20:49:01Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00974112749099731,2010-08-05T20:56:39Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00940698385238647,2010-08-05T21:03:03Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00932127237319946,2010-08-05T21:59:35Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00893598794937134,2010-08-05T22:00:02Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0094340443611145,2010-08-06T14:45:57Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00948184728622437,2010-08-06T19:17:25Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00946003198623657,2010-08-06T20:28:19Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.0095818042755127,2010-08-06T20:39:03Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+  HERE
+  PERF_WALL_TIME_FILES["PortalTest#test_portal_again_wall_time.csv"] = <<-HERE
+measurement,created_at,app,rails,ruby,platform
+0.00963455438613892,2010-08-06T20:28:20Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+0.00959175825119019,2010-08-06T20:39:04Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
+  HERE
+
 
 
 end
