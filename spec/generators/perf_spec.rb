@@ -9,35 +9,14 @@ describe MetricFu::Perf do
 
   describe "emit method" do
 
-    it "should clear out previous output and create new output folder" do
-      @perf.stub!(:`)
-      FileUtils.should_receive(:rm_rf).with(MetricFu::Perf.metric_directory, :verbose => false)
-      Dir.should_receive(:mkdir).with(MetricFu::Perf.metric_directory)
-      @perf.emit
-    end
-
     it "should set the RAILS_ENV" do
-      FileUtils.stub!(:rm_rf)
-      Dir.stub!(:mkdir)
       MetricFu.perf[:environment] = "metrics"
       @perf.should_receive(:`).with(/RAILS_ENV=metrics/)
       @perf.emit
     end
-
-    it "should write results to output file" do
-      FileUtils.stub!(:rm_rf)
-      Dir.stub!(:mkdir)
-      MetricFu.perf[:environment] = "metrics"
-      @perf.should_receive(:`).with(/>> .*perf\.txt/)
-      @perf.emit
-    end
-
   end
 
   describe "analyze method" do
-    before :each do
-    end
-
 
     it "should open each wall time csv file and process each line" do
       Dir.should_receive(:[]).
@@ -46,11 +25,48 @@ describe MetricFu::Perf do
       PERF_WALL_TIME_FILES.each_pair do |test_file_name,test_file_contents|
         mock_file = mock("io", :read => "some stuff")
         File.should_receive(:open).
-                with(MetricFu::Perf.metrics_directory + "/" + test_file_name).
+                with(@perf.metric_directory + "/" + test_file_name).
                 and_yield(mock_file)
         @perf.should_receive(:process_wall_time_file).with("some stuff")
       end
       @perf.analyze
+    end
+
+    it "should create a hash with the value as an array of scores" do
+      file_name = 'file_name'
+      score_values = [1,2,3,4,5,6,8,9]
+
+      Dir.stub!(:[]).
+              with(/.*wall_time.csv/).
+              and_return(file_name)
+      File.stub!(:open).and_yield(StringIO.new('a value'))
+      @perf.stub!(:process_wall_time_file).and_return(score_values)
+      scores = @perf.analyze
+      
+      scores[file_name].should == score_values
+    end
+
+    it "should create a hash with a key for each file" do
+      Dir.should_receive(:[]).
+              with(/.*wall_time.csv/).
+              and_return(PERF_WALL_TIME_FILES.keys)
+
+      File.stub!(:open).and_yield(StringIO.new(''))
+      scores = @perf.analyze
+      scores.each_pair do |file_name, scores|
+        PERF_WALL_TIME_FILES.should have_key file_name
+      end
+
+    end
+
+  end
+
+
+  describe "to_h method" do
+    it "should put things into a hash" do
+      score_content = "the_scores"
+      @perf.instance_variable_set(:@scores, score_content)
+      @perf.to_h[:perf].should == score_content
     end
   end
 
