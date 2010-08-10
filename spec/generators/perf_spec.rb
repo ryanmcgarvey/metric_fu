@@ -21,12 +21,10 @@ describe MetricFu::Perf do
     it "should open each wall time csv file and process each line" do
       #files = PERF_WALL_TIME_FILES.keys.inject(""){}
       prepended_list = []
-      PERF_WALL_TIME_FILES.keys.each do |key|
-        prepended_list << MetricFu.perf[:output_directory] + "/" + key
-      end
+      file_paths = PERF_WALL_TIME_FILES.keys.map { |cur| MetricFu.perf[:output_directory] + "/" + cur }
       Dir.should_receive(:[]).
               with(/.*wall_time.csv/).
-              and_return(prepended_list)
+              and_return(file_paths)
       PERF_WALL_TIME_FILES.keys.each do |test_file_name|
         mock_file = mock("io", :read => "some stuff")
         File.should_receive(:open).
