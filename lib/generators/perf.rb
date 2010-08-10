@@ -6,14 +6,14 @@ module MetricFu
   class Perf < Generator
 
     def emit
-      `RAILS_ENV=#{MetricFu.perf[:environment]} rake test:benchmark`
+      `rake RAILS_ENV=#{MetricFu.perf[:environment]} test:benchmark`
     end
 
     def analyze
       @scores = {}
-      metric_files = Dir["#{metric_directory}/*wall_time.csv"]
+      metric_files = Dir["#{MetricFu.perf[:output_directory]}/*wall_time.csv"]
       metric_files.each do |metric_file|
-        File.open("#{MetricFu.perf[:output_directory]}/#{metric_file}") do |in_file|
+        File.open(metric_file) do |in_file|
           @scores[metric_file] = process_wall_time_file(in_file.read)          
         end
       end
