@@ -53,10 +53,10 @@ describe MetricFu::Perf do
       Dir.should_receive(:[]).
               with(/.*wall_time.csv/).
               and_return(PERF_WALL_TIME_FILES.keys)
-
+      @perf.stub!(:process_wall_time_file).and_return({:elapsed_time => 0})
       File.stub!(:open).and_yield(StringIO.new(''))
       scores = @perf.analyze
-      scores.each_pair do |file_name, scores|
+      scores.each_pair do |file_name, score|
         PERF_WALL_TIME_FILES.should have_key file_name
       end
 
@@ -74,14 +74,20 @@ describe MetricFu::Perf do
   end
 
   describe "process_wall_time_file method" do
-    it "should parse csv into array of scores" do
+#    it "should parse csv into array of scores" do
+#      wall_time_content = PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"]
+#      scores = @perf.process_wall_time_file(wall_time_content)
+#      scores.size.should == 17
+#      scores.first[:score].should ==0.0126267671585083
+#      scores.first[:time].should ==DateTime.parse("2010-08-04T19:46:16Z")
+#      scores.last[:score].should == 0.0131937265396118
+#      scores.last[:time].should == DateTime.parse("2010-08-06T20:39:03Z")
+#    end
+
+    it "should store only most recent score" do
       wall_time_content = PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"]
-      scores = @perf.process_wall_time_file(wall_time_content)
-      scores.size.should == 17
-      scores.first[:score].should ==0.0126267671585083
-      scores.first[:time].should ==DateTime.parse("2010-08-04T19:46:16Z")
-      scores.last[:score].should == 0.0131937265396118
-      scores.last[:time].should == DateTime.parse("2010-08-06T20:39:03Z")
+      score = @perf.process_wall_time_file(wall_time_content)
+      score[:elapsed_time].should == 0.0131937265396118
     end
   end
 
@@ -89,17 +95,11 @@ describe MetricFu::Perf do
     it "should return the correct score item to a correct line" do
       row = ["0.0131937265396118", "2010-08-06T20:39:03Z", nil, "2.3.4", "ruby-1.8.7.253", "x86_64-linux"]
       score_item = @perf.parse_array_into_score_item(row)
-      score_item[:score].should == 0.0131937265396118
-      score_item[:time].should == DateTime.parse("2010-08-06T20:39:03Z")
+      score_item.should == {:elapsed_time => 0.0131937265396118}      
     end
 
     it "should raise if the first item is not a float" do
       row = ["measurement", "2010-08-06T20:39:03Z", "app", "rails", "ruby", "platform"]
-      lambda {@perf.parse_array_into_score_item(row)}.should raise_error(ArgumentError)
-    end
-
-    it "should raise if the second item is not a date" do
-      row = ["0.1", "created_at", "app", "rails", "ruby", "platform"]
       lambda {@perf.parse_array_into_score_item(row)}.should raise_error(ArgumentError)
     end
 
