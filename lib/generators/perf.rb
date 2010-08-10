@@ -5,15 +5,6 @@ require 'csv'
 module MetricFu
   class Perf < Generator
 
-
-    class ScoreItem
-      attr_accessor :score, :time
-      def initialize(score,time)
-        @score = score
-        @time = time
-      end
-    end
-
     def emit
       `RAILS_ENV=#{MetricFu.perf[:environment]} rake test:benchmark`
     end
@@ -48,8 +39,7 @@ module MetricFu
     def parse_array_into_score_item(row)
       score = Float(row[0])
       time = DateTime.parse(row[1])
-
-      ScoreItem.new(score,time)
+      {:score => score, :time => time}
     end
 
   end

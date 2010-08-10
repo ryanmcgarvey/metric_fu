@@ -64,7 +64,7 @@ describe MetricFu::Perf do
 
   describe "to_h method" do
     it "should put things into a hash" do
-      score_content = "the_scores"
+      score_content = "something"
       @perf.instance_variable_set(:@scores, score_content)
       @perf.to_h[:perf].should == score_content
     end
@@ -75,10 +75,10 @@ describe MetricFu::Perf do
       wall_time_content = PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"]
       scores = @perf.process_wall_time_file(wall_time_content)
       scores.size.should == 17
-      scores.first.score.should ==0.0126267671585083
-      scores.first.time.should ==DateTime.parse("2010-08-04T19:46:16Z")
-      scores.last.score.should == 0.0131937265396118
-      scores.last.time.should == DateTime.parse("2010-08-06T20:39:03Z")
+      scores.first[:score].should ==0.0126267671585083
+      scores.first[:time].should ==DateTime.parse("2010-08-04T19:46:16Z")
+      scores.last[:score].should == 0.0131937265396118
+      scores.last[:time].should == DateTime.parse("2010-08-06T20:39:03Z")
     end
   end
 
@@ -86,8 +86,8 @@ describe MetricFu::Perf do
     it "should return the correct score item to a correct line" do
       row = ["0.0131937265396118", "2010-08-06T20:39:03Z", nil, "2.3.4", "ruby-1.8.7.253", "x86_64-linux"]
       score_item = @perf.parse_array_into_score_item(row)
-      score_item.score.should == 0.0131937265396118
-      score_item.time.should == DateTime.parse("2010-08-06T20:39:03Z")
+      score_item[:score].should == 0.0131937265396118
+      score_item[:time].should == DateTime.parse("2010-08-06T20:39:03Z")
     end
 
     it "should raise if the first item is not a float" do
