@@ -14,10 +14,11 @@ module MetricFu
       metric_files = Dir["#{MetricFu.perf[:output_directory]}/*wall_time.csv"]
       metric_files.each do |metric_file|
         File.open(metric_file) do |in_file|
+          file_title = File.basename(metric_file, ".csv")
           begin
-            @scores[metric_file] = process_wall_time_file(in_file.read)          
+            @scores[file_title] = process_wall_time_file(in_file.read)
           rescue ArgumentError, TypeError => e
-            @scores[metric_file] = {:elapsed_time => 0}
+            @scores[file_title] = {:elapsed_time => 0}
           end
         end
       end

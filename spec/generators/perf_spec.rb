@@ -50,6 +50,10 @@ describe MetricFu::Perf do
     end
 
     it "should create a hash with a key for each file" do
+      files = PERF_WALL_TIME_FILES.keys.collect do |file_name|
+        File.basename(file_name, '.csv')
+      end
+
       Dir.should_receive(:[]).
               with(/.*wall_time.csv/).
               and_return(PERF_WALL_TIME_FILES.keys)
@@ -57,7 +61,7 @@ describe MetricFu::Perf do
       File.stub!(:open).and_yield(StringIO.new(''))
       scores = @perf.analyze
       scores.each_pair do |file_name, score|
-        PERF_WALL_TIME_FILES.should have_key file_name
+        files.should include file_name
       end
 
     end
@@ -85,7 +89,7 @@ describe MetricFu::Perf do
 #    end
 
     it "should store only most recent score" do
-      wall_time_content = PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"]
+      wall_time_content = PERF_WALL_TIME_FILES["tmp/FrontPageTest#test_portal_wall_time.csv"]
       score = @perf.process_wall_time_file(wall_time_content)
       score[:elapsed_time].should == 0.0131937265396118
     end
@@ -110,7 +114,7 @@ describe MetricFu::Perf do
   end
 
   PERF_WALL_TIME_FILES = {}
-  PERF_WALL_TIME_FILES["FrontPageTest#test_portal_wall_time.csv"] = <<-HERE
+  PERF_WALL_TIME_FILES["tmp/FrontPageTest#test_portal_wall_time.csv"] = <<-HERE
 measurement,created_at,app,rails,ruby,platform
 0.0126267671585083,2010-08-04T19:46:16Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
 0.0125694274902344,2010-08-04T20:07:17Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
@@ -131,7 +135,7 @@ measurement,created_at,app,rails,ruby,platform
 0.0131937265396118,2010-08-06T20:39:03Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
   HERE
 
-  PERF_WALL_TIME_FILES["PortalTest#test_portal_wall_time.csv"] = <<-HERE
+  PERF_WALL_TIME_FILES["tmp/PortalTest#test_portal_wall_time.csv"] = <<-HERE
 measurement,created_at,app,rails,ruby,platform
 0.0162451863288879,2010-08-04T19:28:56Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
 0.0126134753227234,2010-08-04T19:29:55Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
@@ -154,7 +158,7 @@ measurement,created_at,app,rails,ruby,platform
 0.00946003198623657,2010-08-06T20:28:19Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
 0.0095818042755127,2010-08-06T20:39:03Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
   HERE
-  PERF_WALL_TIME_FILES["PortalTest#test_portal_again_wall_time.csv"] = <<-HERE
+  PERF_WALL_TIME_FILES["tmp/PortalTest#test_portal_again_wall_time.csv"] = <<-HERE
 measurement,created_at,app,rails,ruby,platform
 0.00963455438613892,2010-08-06T20:28:20Z,,2.3.4,ruby-1.8.7.253,x86_64-linux
 0.00959175825119019,2010-08-06T20:39:04Z,,2.3.4,ruby-1.8.7.253,x86_64-linux

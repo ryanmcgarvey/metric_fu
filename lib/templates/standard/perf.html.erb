@@ -1,4 +1,4 @@
-<h3>Rake Benchmarks Results</h3>
+<h3>Rake Stats  Results</h3>
 
 <% graph_name = 'perf' %>
 <% if MetricFu.configuration.graph_engine == :gchart %>
@@ -7,6 +7,3 @@
 <canvas id="graph"></canvas>
 <script language="javascript" src="<%= graph_name %>.js?<%= Time.now.to_i %>" type="text/javascript"></script>
 <% end %>
-
-
-<p>Generated on <%= Time.now.localtime %></p>

@@ -1,7 +1,9 @@
 module MetricFu
   class PerfGrapher < Grapher
     attr_accessor :test_runs_list, :labels
+
     def initialize
+      super
       self.labels = {}
       self.test_runs_list = {}
     end

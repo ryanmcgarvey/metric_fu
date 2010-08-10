@@ -8,7 +8,7 @@ module MetricFu
   AVAILABLE_METRICS = [:churn, :flog, :flay, :reek, 
                        :roodi, :saikuro, :rcov, :perf]
 
-  AVAILABLE_GRAPHS = [:flog, :flay, :reek, :roodi, :rcov, :rails_best_practices]
+  AVAILABLE_GRAPHS = [:flog, :flay, :reek, :roodi, :rcov, :rails_best_practices, :perf]
   AVAILABLE_GRAPH_ENGINES = [:gchart, :bluff]
 
   # The @@configuration class variable holds a global type configuration

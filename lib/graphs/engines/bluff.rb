@@ -99,14 +99,13 @@ module MetricFu
   end
 
   class PerfBluffGrapher < PerfGrapher
-
     def graph!
       content = <<-EOS
         #{BLUFF_DEFAULT_OPTIONS}
         g.title = 'Performance Tests';
         EOS
 
-      @tests.each_pair do |test_name,test_scores|
+      @test_runs_list.each_pair do |test_name,test_scores|
         content += "g.data('#{test_name}', [#{test_scores.join(',')}]);"
       end
 
@@ -114,6 +113,7 @@ module MetricFu
       g.labels = #{@labels.to_json};
       g.draw();
       EOS
+      File.open(File.join(MetricFu.output_directory, 'perf.js'), 'w') {|f| f << content }
     end
   end
 
