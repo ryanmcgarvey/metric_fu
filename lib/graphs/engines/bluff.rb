@@ -98,6 +98,26 @@ module MetricFu
     end
   end
 
+  class PerfBluffGrapher < PerfGrapher
+
+    def graph!
+      content = <<-EOS
+        #{BLUFF_DEFAULT_OPTIONS}
+        g.title = 'Performance Tests';
+        EOS
+
+      @tests.each_pair do |test_name,test_scores|
+        content += "g.data('#{test_name}', [#{test_scores.join(',')}]);"
+      end
+
+      content += <<-EOS
+      g.labels = #{@labels.to_json};
+      g.draw();
+      EOS
+    end
+  end
+
+
   class RailsBestPracticesBluffGrapher < RailsBestPracticesGrapher
     def graph!
       content = <<-EOS

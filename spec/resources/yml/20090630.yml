@@ -7920,3 +7920,11 @@
     :problem: use before_filter for show,edit,update,destroy
   :total: 
   - Found 2 errors.
+:perf:
+ tmp/performance/PortalTest#test_portal_wall_time.csv:
+   :elapsed_time: 0.00888323783874512
+ tmp/performance/FrontPageTest#test_portal_wall_time.csv:
+   :elapsed_time: 0.0142309665679932
+ tmp/performance/PortalTest#test_portal_again_wall_time.csv:
+   :elapsed_time: 0.00926393270492554
+ 
