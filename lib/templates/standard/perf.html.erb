@@ -1,9 +1,27 @@
-<h3>Rake Stats  Results</h3>
+<html>
+<head>
+  <title>Rake Stats Results</title>
+  <style>
+      <%= inline_css("default.css") %>
+  </style>
+</head>
 
-<% graph_name = 'perf' %>
-<% if MetricFu.configuration.graph_engine == :gchart %>
-<img src="<%= graph_name %>.png?<%= Time.now.to_i %>" />
-<% else %>
-<canvas id="graph"></canvas>
-<script language="javascript" src="<%= graph_name %>.js?<%= Time.now.to_i %>" type="text/javascript"></script>
-<% end %>
+<body>
+<p>Rails rake perf results.</p>
+<table>
+  <tr>
+    <th>Test Name</th>
+    <th>Time (in seconds)</th>
+  </tr>
+  <% @perf.each_pair do |test_name,test_results| %>
+      <tr>
+        <td><%= test_name %></td>
+        <td><%= sprintf("%.3f", test_results[:elapsed_time]) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<p>Generated on <%= Time.now.localtime %></p>
+
+</body>
+</html>
