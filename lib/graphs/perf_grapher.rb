@@ -1,11 +1,12 @@
 module MetricFu
   class PerfGrapher < Grapher
-    attr_accessor :test_runs_list, :labels
+    attr_accessor :test_runs_list, :labels, :date_count
 
     def initialize
       super
       self.labels = {}
       self.test_runs_list = {}
+      self.date_count = 0
     end
 
     def push_score_to_test(test_run_name, score)
@@ -15,6 +16,7 @@ module MetricFu
 
     def get_metrics(metrics, date)
       if metrics && metrics[:perf]
+        self.date_count +=1
         metrics[:perf].each_pair do |test_run_name, score|
           push_score_to_test(test_run_name, score[:elapsed_time])
         end

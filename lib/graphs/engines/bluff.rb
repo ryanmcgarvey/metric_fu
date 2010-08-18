@@ -106,6 +106,9 @@ module MetricFu
         EOS
 
       @test_runs_list.each_pair do |test_name,test_scores|
+        while test_scores.size < @date_count
+          test_scores.insert(0,nil)
+        end
         content += "g.data('#{test_name}', [#{test_scores.join(',')}]);"
       end
 

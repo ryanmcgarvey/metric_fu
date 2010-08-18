@@ -19,8 +19,6 @@ describe MetricFu::Perf do
   describe "analyze method" do
 
     it "should open each wall time csv file and process each line" do
-      #files = PERF_WALL_TIME_FILES.keys.inject(""){}
-      prepended_list = []
       file_paths = PERF_WALL_TIME_FILES.keys.map { |cur| MetricFu.perf[:output_directory] + "/" + cur }
       Dir.should_receive(:[]).
               with(/.*wall_time.csv/).
